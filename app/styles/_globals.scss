@@ -1,0 +1,255 @@
+html {
+    width: 100vw;
+    box-sizing: border-box;
+
+    @media only screen and (min-width: 376px) {
+        height: 100vh;
+        overflow: hidden;
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    width: 100%;
+    font-family: "Spartan", sans-serif;
+    font-size: 15px;
+    margin: 0px;
+    padding: 0px;
+    overflow-y: scroll;
+
+    background-color: $white;
+    background-image: url(/images/bg-pattern-top-mobile.svg), url(/images/bg-pattern-bottom-mobile.svg);
+    background-repeat: no-repeat, no-repeat;
+    background-position-y: top, bottom;
+    background-size: 100% 30%, 100% 60%;
+
+    @media only screen and (min-width: 376px) {
+        background-image: url(/images/bg-pattern-top-desktop.svg), url(/images/bg-pattern-bottom-desktop.svg);
+        background-position-x: left, right;
+        background-size: 50% 40%, 80% 80%;
+    }
+
+    display: grid;
+    grid-template-rows: 220px 270px 1fr 50px;
+    grid-template-areas:
+        "text"
+        "statistics"
+        "reviews"
+        "attribution";
+    grid-row-gap: 15px;
+    justify-items: center;
+
+    @media only screen and (min-width: 376px) {
+        height: 100%;
+        grid-template-rows: 1fr 1fr 50px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "text statistics"
+            "reviews reviews"
+            "attribution attribution";
+        justify-items: space-evenly;
+        align-items: space-evenly;
+    }
+
+    #text {
+        grid-area: text;
+
+        h1 {
+            color: $veryDarkMagenta;
+            @media only screen and (min-width: 376px) {
+                font-size: 3rem;
+                margin-top: 0px;
+                text-align: left;
+            }
+        }
+
+        span {
+            color: $darkGrayishMagenta;
+            @media only screen and (min-width: 376px) {
+                text-align: left;
+            }
+        }
+
+        @media only screen and (min-width: 376px) {
+            margin-left: 160px;
+            margin-top: 130px;
+
+            padding-left: 0px;
+        }
+    }
+
+    #statistics {
+        grid-area: statistics;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 0px;
+
+        @media only screen and (min-width: 376px) {
+            align-items: flex-end;
+            width: calc(100% - 160px);
+            margin-right: 160px;
+            margin-top: 130px;
+            padding: 0px;
+
+            & > div:first-child {
+                margin-right: 100px;
+            }
+
+            & > div:nth-child(2) {
+                margin-right: 50px;
+            }
+        }
+
+        .box {
+            background-color: $lightGrayishMagenta;
+            border-radius: 20px;
+            height: 80px;
+            width: 330px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            @media only screen and (min-width: 376px) {
+                height: 60px;
+                width: 450px;
+                flex-direction: row;
+                padding: 0px;
+            }
+
+            .stars {
+                display: flex;
+                justify-content: center;
+
+                @media only screen and (min-width: 376px) {
+                    align-items: center;
+                    padding: 0px;
+                }
+
+                img {
+                    margin: 0px 4px 0px 4px;
+                    margin-top: 20px;
+                    @media only screen and (min-width: 376px) {
+                        margin-top: 0px;
+                    }
+                }
+            }
+
+            span {
+                text-align: center;
+                color: $veryDarkMagenta;
+                font-weight: 700;
+                line-height: 60px;
+            }
+        }
+    }
+
+    #review1 {
+        grid-area: review1;
+    }
+
+    #review2 {
+        grid-area: review2;
+    }
+
+    #review3 {
+        grid-area: review3;
+    }
+
+    #reviews {
+        grid-area: reviews;
+        display: grid;
+        grid-template-rows: 330px 330px 330px;
+        grid-template-areas:
+            "review1"
+            "review2"
+            "review3";
+        row-gap: 15px;
+
+        @media only screen and (min-width: 376px) {
+            grid-template-columns: 350px 350px 350px;
+            grid-template-areas: "review1 review2 review3";
+            grid-template-rows: 280px;
+            padding: 0px;
+            align-content: center;
+            justify-content: space-between;
+            width: calc(100% - 320px);
+
+            & > div:first-child {
+                margin-top: 0px;
+                margin-bottom: 40px;
+            }
+
+            & > div:last-child {
+                margin-top: 40px;
+                margin-bottom: 0px;
+            }
+        }
+    }
+
+    .review {
+        background-color: $veryDarkMagenta;
+        border-radius: 20px;
+        width: 330px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        & img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            float: left;
+            margin-right: 25px;
+        }
+
+        @media only screen and (min-width: 376px) {
+            margin: 20px 0px 20px 0px;
+        }
+    }
+
+    & div {
+        padding: 0px 30px 0px 30px;
+    }
+}
+
+.attribution {
+    grid-area: attribution;
+    font-size: 11px;
+    text-align: center;
+}
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+.white-heading-sm {
+    color: $white;
+    line-height: 1.5;
+    font-weight: 500;
+    margin-bottom: 8px;
+    @media only screen and (min-width: 376px) {
+        font-size: 0.8rem;
+    }
+}
+
+.pink-secondary-heading {
+    color: $softPink;
+    @media only screen and (min-width: 376px) {
+        font-size: 0.8rem;
+    }
+}
+
+.white {
+    color: $white;
+    @media only screen and (min-width: 376px) {
+        font-size: 0.8rem;
+    }
+}
